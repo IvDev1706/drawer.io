@@ -1,0 +1,25 @@
+:root {
+    --primary-1: #555;
+    --primary-2: #444;
+    --primary-3: #333;
+    --clear-1: #fff;
+    --clear-2: #ccc;
+    --blue-1: #56c;
+    --blue-2: #39c;
+    --blue-3: #2BE;
+}
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-1);
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

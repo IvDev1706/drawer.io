@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./dist/main.js" defer></script>
+    <title>Drawer.io</title>
+</head>
+<body id="cont">
+    <div id="bar">
+        <img src="./assets/menu.png" alt=">>" class="pic">
+    </div>
+    <header id="head-cont" class="row-layout centered">
+        <div id="tools-cont" class="matrix-2x2">
+            <button id="pincel-tool" class="btn">
+                <img src="./assets/pincel-DvEz6Ln2.png" alt="pincel" class="pic">
+            </button>
+            <button id="text-tool" class="btn">
+                <img src="./assets/texto-Bwge-rkD.png" alt="texto" class="pic">
+            </button>
+            <button id="eraser-tool" class="btn">
+                <img src="./assets/borrador-vHqjSea_.png" alt="borrador" class="pic">
+            </button>
+            <button id="clean-tool" class="btn">
+                <img src="./assets/escoba-xiQ31Mpi.png" alt="limpiar" class="pic">
+            </button>
+        </div>
+        <div id="config-cont" class="matrix-2x3">
+            <input class="inpt" type="color" id="line-color">
+            <input class="inpt" type="color" id="fill-color" value="#FFFFFF">
+            <input class="inpt" type="range" id="line-weight" min="1" max="20" value="5">
+            <select class="inpt" id="font">
+                <option value="Arial" selected>Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Sans-Serif">Sans-Serif</option>
+            </select>
+            <input class="inpt" type="number" id="font-size" min="1" max="20" value="10">
+        </div>
+        <div id="shapes-cont" class="matrix-2x5">
+            <button id="line-tool" class="btn">
+                <img src="./assets/linea-DDeLJOmd.png" alt="linea" class="pic">
+            </button>
+            <button id="rect-tool" class="btn">
+                <img src="./assets/rect-redondeado-DMwGMQIw.png" alt="rectangulo" class="pic">
+            </button>
+            <button id="rrect-tool" class="btn">
+                <img src="./assets/rect-redondeado-DMwGMQIw.png" alt="rec. redondeado" class="pic">
+            </button>
+            <button id="circle-tool" class="btn">
+                <img src="./assets/circulo-DBmhRr6A.png" alt="circulo" class="pic">
+            </button>
+            <button id="oval-tool" class="btn">
+                <img src="./assets/ovalo-BMTbkoso.png" alt="ovalo" class="pic">
+            </button>
+            <button id="tri-tool" class="btn">
+                <img src="./assets/triangulo-BcpGkEPB.png" alt="triangulo" class="pic">
+            </button>
+            <button id="diam-tool" class="btn">
+                <img src="./assets/rombo-B9v9yhYt.png" alt="rombo" class="pic">
+            </button>
+            <button id="pent-tool" class="btn">
+                <img src="./assets/pentagono-DHlJJh-0.png" alt="pentagono" class="pic">
+            </button>
+            <button id="hex-tool" class="btn">
+                <img src="./assets/hexagono-9-A00jb-.png" alt="hexagono" class="pic">
+            </button>
+        </div>
+        <div id="transform-cont" class="matrix-2x2">
+            <button id="move-tool" class="btn">
+                <img src="./assets/moverse.png" alt="mover" class="pic">
+            </button>
+            <button id="scale-tool" class="btn">
+                <img src="./assets/pantalla-completa-DIic-5cO.png" alt="escalar" class="pic">
+            </button>
+            <button id="rotate-tool" class="btn">
+                <img src="./assets/actualizar-Cko3VI92.png" alt="rotar" class="pic">
+            </button>
+            <input class="inpt" type="number" id="angle" min="0" max="360" value="90">
+        </div>
+        <button id="save-tool" class="btn">
+            <img src="./assets/sav.png" alt="guardar" class="pic">
+        </button>
+    </header>
+    <main id="main-cont">
+        <div id="canvas-cont">
+            <div style="width: 70%; margin: 0px auto;" id="text-cont" class="row-layout spaced">
+                <p id="res-text">Resolucion: (1080x480)</p>
+                <p id="tool-text">Herramienta: </p>
+                <p id="cursor-text">Puntero: (0, 0)</p>
+            </div>
+            <div id="board-cont" style="width: 1080px; margin: 0px auto;">
+                <!-- para PC -> 1080x480 y para movil 360x720 -->
+                <canvas id="board" width="1080" height="480"></canvas>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

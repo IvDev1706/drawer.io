@@ -1,0 +1,9 @@
+@import './globals.css';
+@import './layouts/flex-layouts.css';
+@import './layouts/grid-layouts.css';
+@import './components/semantic.css';
+@import './components/buttons.css';
+@import './components/inputs.css';
+@import './components/pictures.css';
+@import './specific/canvas.css';
+@import './specific/tools.css';

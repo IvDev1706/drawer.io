@@ -1,0 +1,19 @@
+.btn {
+    display: inline-block;
+    background-color: var(--primary-1);
+    color: var(--clear-1);
+    border-radius: 5px;
+    border: 1px solid var(--primary-1);
+    padding: 3px;
+    margin: 2px;
+}
+
+.btn:hover {
+    background-color: var(--primary-2);
+    outline: 1px solid var(--blue-3);
+}
+
+.btn:active {
+    background-color: var(--primary-3);
+    color: var(--clear-2);
+}

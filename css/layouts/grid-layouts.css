@@ -1,0 +1,25 @@
+.matrix-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.matrix-2x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.matrix-2x5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+
+@media screen and (max-width: 800px) {
+    .matrix-2x2, .matrix-2x3, .matrix-2x5 {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}

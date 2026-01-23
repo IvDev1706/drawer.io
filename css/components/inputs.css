@@ -1,0 +1,20 @@
+.inpt {
+    display: inline-block;
+    background-color: var(--primary-1);
+    color: var(--clear-1);
+    border-radius: 5px;
+    border: 1px solid var(--primary-1);
+    margin: 2px;
+}
+
+.inpt:hover {
+    outline: 1px solid var(--blue-3);
+}
+
+.inpt::-webkit-slider-thumb, .inpt::-webkit-slider-runnable-track, .inpt::-moz-range-thumb, .inpt::-moz-range-progress {
+    background-color: var(--blue-3);
+}
+
+.inpt::-moz-range-track {
+    background-color: var(--clear-2);
+}

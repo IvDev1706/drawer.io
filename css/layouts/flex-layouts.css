@@ -1,0 +1,17 @@
+.column-layout {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.row-layout {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.spaced {
+    justify-content: space-between;
+}
+
+.centered {
+    justify-content: center;
+}

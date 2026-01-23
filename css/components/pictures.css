@@ -1,0 +1,10 @@
+.pic {
+    height: 28px;
+    filter: invert(1);
+}
+
+@media screen and (max-width: 800px) {
+    .pic {
+        height: 20px;
+    }
+}
