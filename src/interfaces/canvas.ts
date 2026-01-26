@@ -13,13 +13,16 @@ interface CanvasProps {
     canvas: HTMLCanvasElement,
     canvas_pointer: HTMLParagraphElement,
     config: CanvasConfig,
-    tool: string
+    tool: string,
+    isDrawing: boolean
 }
 
 export interface CanvasController extends CanvasProps {
     init(this:CanvasController): void,
     get_position(this:CanvasController, e:MouseEvent | TouchEvent): Point,
     set_tool(this:CanvasController, tool:string): void,
+    cleanCanvas(this:CanvasController): void,
+    updateConfig(this:CanvasController):void,
     onMove(this:CanvasController, e:MouseEvent | TouchEvent): void,
     onStart(this:CanvasController, e:MouseEvent | TouchEvent): void,
     onStop(this:CanvasController, e:MouseEvent | TouchEvent): void

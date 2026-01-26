@@ -28,6 +28,31 @@ export function closePincel(canvas) {
     if (!ctx) {
         return;
     }
-    //abrir el path
+    //cerrar el path
     ctx.closePath();
+}
+export function openEraser(canvas, p) {
+    //obtener el contexto
+    const ctx = canvas.getContext("2d");
+    //validar el contexto
+    if (!ctx) {
+        return;
+    }
+    //guardar estilos y fijar color blanco
+    ctx.save();
+    ctx.strokeStyle = "#FFFFFF";
+    //abrir el pincel
+    openPincel(canvas, p);
+}
+export function closeEraser(canvas) {
+    //obtener el contexto
+    const ctx = canvas.getContext("2d");
+    //validar el contexto
+    if (!ctx) {
+        return;
+    }
+    //restaurar los estilos
+    ctx.restore();
+    //cerrar el pincel
+    closePincel(canvas);
 }

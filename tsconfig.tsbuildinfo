@@ -1,1 +1,1 @@
-{"root":["./src/canvas.ts","./src/main.ts","./src/interfaces/canvas.ts","./src/interfaces/paths.ts","./src/painting/drawPincel.ts","./src/utils/tools.ts"],"version":"5.9.3"}
+{"root":["./src/canvas.ts","./src/main.ts","./src/interfaces/canvas.ts","./src/interfaces/paths.ts","./src/painting/drawPincel.ts","./src/painting/repaints.ts","./src/painting/texts.ts","./src/utils/tools.ts"],"version":"5.9.3"}

@@ -38,6 +38,39 @@ export function closePincel(canvas:HTMLCanvasElement):void{
         return
     }
 
-    //abrir el path
+    //cerrar el path
     ctx.closePath();
+}
+
+export function openEraser(canvas:HTMLCanvasElement, p:Point){
+    //obtener el contexto
+    const ctx = canvas.getContext("2d");
+
+    //validar el contexto
+    if(!ctx){
+        return
+    }
+
+    //guardar estilos y fijar color blanco
+    ctx.save();
+    ctx.strokeStyle = "#FFFFFF"
+
+    //abrir el pincel
+    openPincel(canvas,p);
+}
+
+export function closeEraser(canvas:HTMLCanvasElement):void{
+    //obtener el contexto
+    const ctx = canvas.getContext("2d");
+
+    //validar el contexto
+    if(!ctx){
+        return
+    }
+
+    //restaurar los estilos
+    ctx.restore();
+
+    //cerrar el pincel
+    closePincel(canvas);
 }
