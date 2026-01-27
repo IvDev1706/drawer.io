@@ -51,7 +51,7 @@
         left: 200px;
     }
 
-    #bar:hover ~ #head-cont {
+    #bar:hover ~ #head-cont, #head-cont:hover {
         left: 0px;
     }
 

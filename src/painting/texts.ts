@@ -1,4 +1,4 @@
-import { Point } from "../interfaces/paths";
+import { Point } from "../interfaces/paths.js";
 
 export function drawText(canvas:HTMLCanvasElement, text:string, p:Point){
     //obtener el contexto

@@ -1,5 +1,5 @@
 import { get_controller } from "./canvas.js";
-import { ERASER, PINCEL, TEXT } from './utils/tools.js';
+import { CIRCLE, ERASER, LINE, OVAL, PINCEL, RECTANGLE, RRECTANGLE, TEXT } from './utils/tools.js';
 //objeto canvas
 const canvas = document.getElementById("board");
 const canvas_cont = document.getElementById("board-cont");
@@ -12,6 +12,11 @@ const pincel_btn = document.getElementById("pincel-tool");
 const text_btn = document.getElementById("text-tool");
 const eraser_btn = document.getElementById("eraser-tool");
 const clean_btn = document.getElementById("clean-tool");
+const line_btn = document.getElementById("line-tool");
+const rect_btn = document.getElementById("rect-tool");
+const rrect_btn = document.getElementById("rrect-tool");
+const circle_btn = document.getElementById("circle-tool");
+const oval_btn = document.getElementById("oval-tool");
 //campos de configuracion
 const lineColor_fld = document.getElementById("line-color");
 const fillColor_fld = document.getElementById("fill-color");
@@ -79,4 +84,29 @@ eraser_btn.addEventListener("click", (e) => {
 clean_btn.addEventListener("click", (e) => {
     //limpiar el canvas completo
     canvas_controller.cleanCanvas();
+});
+line_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(LINE);
+    canvas_tool.innerText = "Herramienta: " + LINE;
+});
+rect_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(RECTANGLE);
+    canvas_tool.innerText = "Herramienta: " + RECTANGLE;
+});
+rrect_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(RRECTANGLE);
+    canvas_tool.innerText = "Herramienta: " + RRECTANGLE;
+});
+circle_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(CIRCLE);
+    canvas_tool.innerText = "Herramienta: " + CIRCLE;
+});
+oval_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(OVAL);
+    canvas_tool.innerText = "Herramienta: " + OVAL;
 });

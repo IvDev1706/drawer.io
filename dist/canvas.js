@@ -1,7 +1,9 @@
 import { openPincel, drawPincel, closePincel, openEraser, closeEraser } from "./painting/drawPincel.js";
+import { drawArc, drawLine, drawRect } from "./painting/drawShapes.js";
 import { clearCanvas } from "./painting/repaints.js";
 import { drawText } from "./painting/texts.js";
-import { ERASER, NOTHING, PINCEL, TEXT } from './utils/tools.js';
+import { buildShape } from "./utils/shapeFactory.js";
+import { ERASER, NOTHING, PINCEL, TEXT, LINE, RECTANGLE, RRECTANGLE, CIRCLE, OVAL } from './utils/tools.js';
 export function get_controller(canvas, canvas_pointer) {
     //instanciar el objeto
     return {
@@ -17,16 +19,17 @@ export function get_controller(canvas, canvas_pointer) {
         },
         tool: NOTHING,
         isDrawing: false,
+        line_ref: {
+            startPoint: { x: 0, y: 0 },
+            endPoint: { x: 0, y: 0 },
+        },
         init() {
             //poner configuracion inicial
             this.updateConfig();
             //vincular escuchas al canvas
-            this.canvas.onmousedown = (e) => this.onStart(e);
-            this.canvas.onmousemove = (e) => this.onMove(e);
-            this.canvas.onmouseup = (e) => this.onStop(e);
-            this.canvas.ontouchstart = (e) => this.onStart(e);
-            this.canvas.ontouchmove = (e) => this.onMove(e);
-            this.canvas.ontouchend = (e) => this.onStop(e);
+            this.canvas.onpointerdown = (e) => this.onStart(e);
+            this.canvas.onpointermove = (e) => this.onMove(e);
+            this.canvas.onpointerup = (e) => this.onStop(e);
         },
         get_position(e) {
             //objeto a retornar
@@ -37,8 +40,8 @@ export function get_controller(canvas, canvas_pointer) {
                 p.y = e.clientY - this.canvas.getBoundingClientRect().y;
             }
             else {
-                p.x = Math.round(e.touches[0].clientX - this.canvas.getBoundingClientRect().x);
-                p.y = Math.round(e.touches[0].clientY - this.canvas.getBoundingClientRect().y);
+                p.x = Math.floor(e.changedTouches[e.changedTouches.length - 1].clientX - this.canvas.getBoundingClientRect().x);
+                p.y = Math.floor(e.changedTouches[e.changedTouches.length - 1].clientY - this.canvas.getBoundingClientRect().y);
             }
             //retornar el punto
             return p;
@@ -71,6 +74,12 @@ export function get_controller(canvas, canvas_pointer) {
             }
             //obtener punto
             const p = this.get_position(e);
+            //herramienta de figuras
+            if (this.tool != PINCEL && this.tool != ERASER && this.tool != TEXT) {
+                //guardar en referencia
+                this.line_ref.startPoint = Object.assign({}, p);
+                return;
+            }
             //herramienta de texto
             if (this.tool == TEXT) {
                 //pedir el texto a ingresar
@@ -87,7 +96,7 @@ export function get_controller(canvas, canvas_pointer) {
                 openPincel(canvas, p);
                 //herramienta de borrador
             }
-            else if (this.tool == ERASER) {
+            else {
                 //abrir el pincel
                 openEraser(canvas, p);
             }
@@ -108,16 +117,53 @@ export function get_controller(canvas, canvas_pointer) {
             if (this.tool == NOTHING || this.tool == TEXT) {
                 return;
             }
-            //se apaga la bandera
-            this.isDrawing = false;
-            //dibujar el pincel
+            //validar herramienta
+            if (this.tool != PINCEL && this.tool != ERASER) {
+                //obtener las coordenadas
+                this.line_ref.endPoint = this.get_position(e);
+            }
+            //cerrar el pincel
             if (this.tool == PINCEL) {
+                //se apaga la bandera
+                this.isDrawing = false;
                 //cierra el path
                 closePincel(this.canvas);
             }
             else if (this.tool == ERASER) {
+                //se apaga la bandera
+                this.isDrawing = false;
                 //cerrar el borrador
                 closeEraser(this.canvas);
+            }
+            else if (this.tool == LINE) {
+                //construir la linea
+                const line = buildShape(LINE, this.config, Object.assign({}, this.line_ref));
+                //dibujar la linea
+                drawLine(this.canvas, line);
+            }
+            else if (this.tool == RECTANGLE) {
+                //construir la linea
+                const rect = buildShape(RECTANGLE, this.config, Object.assign({}, this.line_ref));
+                //dibujar la linea
+                drawRect(this.canvas, rect);
+            }
+            else if (this.tool == RRECTANGLE) {
+                //construir la linea
+                const rrect = buildShape(RRECTANGLE, this.config, Object.assign({}, this.line_ref));
+                //dibujar la linea
+                drawRect(this.canvas, rrect);
+            }
+            else if (this.tool == CIRCLE) {
+                //construir la linea
+                const circle = buildShape(CIRCLE, this.config, Object.assign({}, this.line_ref));
+                //dibujar la linea
+                drawArc(this.canvas, circle);
+            }
+            else if (this.tool == OVAL) {
+                //construir la linea
+                const oval = buildShape(OVAL, this.config, Object.assign({}, this.line_ref));
+                //dibujar la linea
+                drawArc(this.canvas, oval);
             }
         }
     };

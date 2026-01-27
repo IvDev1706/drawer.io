@@ -1,4 +1,5 @@
 import { Point } from "./paths.js"
+import { RefLine } from "./shapes.js"
 
 export interface CanvasConfig {
     strokeColor: string,
@@ -14,7 +15,8 @@ interface CanvasProps {
     canvas_pointer: HTMLParagraphElement,
     config: CanvasConfig,
     tool: string,
-    isDrawing: boolean
+    isDrawing: boolean,
+    line_ref: RefLine
 }
 
 export interface CanvasController extends CanvasProps {
