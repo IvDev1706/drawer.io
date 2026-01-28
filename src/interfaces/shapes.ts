@@ -32,3 +32,7 @@ export interface Arc extends Shape {
     radiusX: number,
     radiusY?: number
 }
+
+export interface Polygon extends Shape {
+    points: Array<Point>
+}

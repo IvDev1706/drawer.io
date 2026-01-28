@@ -60,3 +60,25 @@ export function drawArc(canvas, arc) {
     //cerrar el path
     ctx.closePath();
 }
+export function drawPolygon(canvas, pol) {
+    //obtener el contexto
+    const ctx = canvas.getContext("2d");
+    //validar el contexto
+    if (!ctx) {
+        return;
+    }
+    //abrir path
+    ctx.beginPath();
+    //mover al punto inicial
+    ctx.moveTo(pol.points[0].x, pol.points[0].y);
+    //dibujar los demas puntos
+    for (let i = 1; i < pol.points.length; i++) {
+        ctx.lineTo(pol.points[i].x, pol.points[i].y);
+    }
+    //cerrar el path
+    ctx.closePath();
+    //rellenar la figura
+    ctx.fill();
+    //rendarizar
+    ctx.stroke();
+}

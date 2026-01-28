@@ -1,5 +1,5 @@
 import { get_controller } from "./canvas.js";
-import { CIRCLE, ERASER, LINE, OVAL, PINCEL, RECTANGLE, RRECTANGLE, TEXT } from './utils/tools.js';
+import { CIRCLE, DIAMOND, ERASER, LINE, OVAL, PENTAGON, PINCEL, RECTANGLE, RRECTANGLE, TEXT, TRIANGLE, HEXAGON } from './utils/tools.js';
 //objeto canvas
 const canvas = document.getElementById("board");
 const canvas_cont = document.getElementById("board-cont");
@@ -17,6 +17,10 @@ const rect_btn = document.getElementById("rect-tool");
 const rrect_btn = document.getElementById("rrect-tool");
 const circle_btn = document.getElementById("circle-tool");
 const oval_btn = document.getElementById("oval-tool");
+const tri_btn = document.getElementById("tri-tool");
+const diam_btn = document.getElementById("diam-tool");
+const pent_btn = document.getElementById("pent-tool");
+const hex_btn = document.getElementById("hex-tool");
 //campos de configuracion
 const lineColor_fld = document.getElementById("line-color");
 const fillColor_fld = document.getElementById("fill-color");
@@ -109,4 +113,24 @@ oval_btn.addEventListener("click", (e) => {
     //definir herramienta en el controlador
     canvas_controller.set_tool(OVAL);
     canvas_tool.innerText = "Herramienta: " + OVAL;
+});
+tri_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(TRIANGLE);
+    canvas_tool.innerText = "Herramienta: " + TRIANGLE;
+});
+diam_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(DIAMOND);
+    canvas_tool.innerText = "Herramienta: " + DIAMOND;
+});
+pent_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(PENTAGON);
+    canvas_tool.innerText = "Herramienta: " + PENTAGON;
+});
+hex_btn.addEventListener("click", (e) => {
+    //definir herramienta en el controlador
+    canvas_controller.set_tool(HEXAGON);
+    canvas_tool.innerText = "Herramienta: " + HEXAGON;
 });

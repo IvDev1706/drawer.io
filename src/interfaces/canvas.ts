@@ -21,11 +21,11 @@ interface CanvasProps {
 
 export interface CanvasController extends CanvasProps {
     init(this:CanvasController): void,
-    get_position(this:CanvasController, e:MouseEvent | TouchEvent): Point,
+    get_position(this:CanvasController, e:PointerEvent): Point,
     set_tool(this:CanvasController, tool:string): void,
     cleanCanvas(this:CanvasController): void,
     updateConfig(this:CanvasController):void,
-    onMove(this:CanvasController, e:MouseEvent | TouchEvent): void,
-    onStart(this:CanvasController, e:MouseEvent | TouchEvent): void,
-    onStop(this:CanvasController, e:MouseEvent | TouchEvent): void
+    onMove(this:CanvasController, e:PointerEvent): void,
+    onStart(this:CanvasController, e:PointerEvent): void,
+    onStop(this:CanvasController, e:PointerEvent): void
 }

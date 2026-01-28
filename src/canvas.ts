@@ -1,11 +1,11 @@
 import { CanvasController } from "./interfaces/canvas.js";
-import { Arc, Line, Rectangle } from "./interfaces/shapes.js";
+import { Arc, Line, Polygon, Rectangle } from "./interfaces/shapes.js";
 import { openPincel, drawPincel, closePincel, openEraser, closeEraser } from "./painting/drawPincel.js";
-import { drawArc, drawLine, drawRect } from "./painting/drawShapes.js";
+import { drawArc, drawLine, drawPolygon, drawRect } from "./painting/drawShapes.js";
 import { clearCanvas } from "./painting/repaints.js";
 import { drawText } from "./painting/texts.js";
-import { buildShape } from "./utils/shapeFactory.js";
-import { ERASER, NOTHING, PINCEL, TEXT, LINE, RECTANGLE, RRECTANGLE, CIRCLE, OVAL } from './utils/tools.js';
+import buildShape from "./utils/shapeFactory.js";
+import { ERASER, NOTHING, PINCEL, TEXT, LINE, RECTANGLE, RRECTANGLE, CIRCLE, OVAL, TRIANGLE, DIAMOND, PENTAGON, HEXAGON } from './utils/tools.js';
 
 export function get_controller(canvas:HTMLCanvasElement, canvas_pointer:HTMLParagraphElement):CanvasController{
     //instanciar el objeto
@@ -35,20 +35,11 @@ export function get_controller(canvas:HTMLCanvasElement, canvas_pointer:HTMLPara
             this.canvas.onpointerup = (e) => this.onStop(e);
         },
         get_position(e) {
-            //objeto a retornar
-            const p = {x:0,y:0};
-
-            //obtener las coordenadas
-            if(e instanceof MouseEvent){
-                p.x = e.clientX - this.canvas.getBoundingClientRect().x;
-                p.y = e.clientY - this.canvas.getBoundingClientRect().y;
-            }else{
-                p.x = Math.floor(e.changedTouches[e.changedTouches.length - 1].clientX - this.canvas.getBoundingClientRect().x);
-                p.y = Math.floor(e.changedTouches[e.changedTouches.length - 1].clientY - this.canvas.getBoundingClientRect().y);
-            }
-
-            //retornar el punto
-            return p;
+            //retornar el punto de coordenadas
+            return {
+                x: e.clientX - this.canvas.getBoundingClientRect().x,
+                y: e.clientY - this.canvas.getBoundingClientRect().y
+            };
         },
         set_tool(tool){
             //cambiar herramienta
@@ -78,6 +69,12 @@ export function get_controller(canvas:HTMLCanvasElement, canvas_pointer:HTMLPara
             if(this.tool == NOTHING){
                 return;
             }
+
+            //verificar el target (solo en movile pasa)
+            if(e.currentTarget != this.canvas){ return; }
+
+            //usar pointer capture
+            this.canvas.setPointerCapture(e.pointerId);
 
             //obtener punto
             const p = this.get_position(e);
@@ -130,6 +127,11 @@ export function get_controller(canvas:HTMLCanvasElement, canvas_pointer:HTMLPara
                 return;
             }
 
+            //liberar el pointer capture
+            if(this.canvas.hasPointerCapture(e.pointerId)){
+                this.canvas.releasePointerCapture(e.pointerId);
+            }
+
             //validar herramienta
             if(this.tool != PINCEL && this.tool != ERASER){
                 //obtener las coordenadas
@@ -149,29 +151,49 @@ export function get_controller(canvas:HTMLCanvasElement, canvas_pointer:HTMLPara
                 closeEraser(this.canvas);
             }else if(this.tool == LINE){
                 //construir la linea
-                const line = buildShape(LINE,this.config,{...this.line_ref}) as Line;
+                const line = buildShape(LINE,this.config,this.line_ref) as Line;
                 //dibujar la linea
                 drawLine(this.canvas,line);
             }else if(this.tool == RECTANGLE){
-                //construir la linea
-                const rect = buildShape(RECTANGLE,this.config,{...this.line_ref}) as Rectangle;
-                //dibujar la linea
+                //construir el rectangulo
+                const rect = buildShape(RECTANGLE,this.config,this.line_ref) as Rectangle;
+                //dibujar el rectangulo
                 drawRect(this.canvas,rect);
             }else if(this.tool == RRECTANGLE){
-                //construir la linea
-                const rrect = buildShape(RRECTANGLE,this.config,{...this.line_ref}) as Rectangle;
-                //dibujar la linea
+                //construir el rectangulo
+                const rrect = buildShape(RRECTANGLE,this.config,this.line_ref) as Rectangle;
+                //dibujar el rectangulo
                 drawRect(this.canvas,rrect);
             }else if(this.tool == CIRCLE){
-                //construir la linea
-                const circle = buildShape(CIRCLE,this.config,{...this.line_ref}) as Arc;
-                //dibujar la linea
+                //construir el circulo
+                const circle = buildShape(CIRCLE,this.config,this.line_ref) as Arc;
+                //dibujar el circulo
                 drawArc(this.canvas,circle);
             }else if(this.tool == OVAL){
-                //construir la linea
-                const oval = buildShape(OVAL,this.config,{...this.line_ref}) as Arc;
-                //dibujar la linea
+                //construir el ovalo
+                const oval = buildShape(OVAL,this.config,this.line_ref) as Arc;
+                //dibujar la ovalo
                 drawArc(this.canvas,oval);
+            }else if(this.tool == TRIANGLE){
+                //construir el triangulo
+                const tri = buildShape(TRIANGLE,this.config,this.line_ref) as Polygon;
+                //dibujar el triangulo
+                drawPolygon(this.canvas,tri);
+            }else if(this.tool == DIAMOND){
+                //construir el rombo
+                const diam = buildShape(DIAMOND,this.config,this.line_ref) as Polygon;
+                //dibujar el rombo
+                drawPolygon(this.canvas,diam);
+            }else if(this.tool == PENTAGON){
+                //construir el pentagono
+                const pent = buildShape(PENTAGON,this.config,this.line_ref) as Polygon;
+                //dibujar el pentagono
+                drawPolygon(this.canvas,pent);
+            }else if(this.tool == HEXAGON){
+                //construir el hexagono
+                const hex = buildShape(HEXAGON,this.config,this.line_ref) as Polygon;
+                //dibujar el hexagono
+                drawPolygon(this.canvas,hex);
             }
         }
     };

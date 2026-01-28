@@ -7,3 +7,7 @@ export const RECTANGLE = "rectangulo";
 export const RRECTANGLE = "rect. redondeado";
 export const CIRCLE = "circulo";
 export const OVAL = "ovalo";
+export const TRIANGLE = "triangulo";
+export const DIAMOND = "rombo";
+export const PENTAGON = "pentagono";
+export const HEXAGON = "hexagono";
