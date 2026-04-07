@@ -34,8 +34,8 @@ export function get_controller(canvas, canvas_pointer) {
         get_position(e) {
             //retornar el punto de coordenadas
             return {
-                x: e.clientX - this.canvas.getBoundingClientRect().x,
-                y: e.clientY - this.canvas.getBoundingClientRect().y
+                x: Math.floor(e.clientX - this.canvas.getBoundingClientRect().x),
+                y: Math.floor(e.clientY - this.canvas.getBoundingClientRect().y)
             };
         },
         set_tool(tool) {

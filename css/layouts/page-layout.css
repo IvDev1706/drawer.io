@@ -1,0 +1,20 @@
+#cont {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 100px 1fr;
+}
+
+#head-cont {
+    grid-column: 1 / span 5;
+    grid-row: 1 / 2;
+}
+
+#side-cont {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#main-cont {
+    grid-column: 2 / span 4;
+    grid-row: 2 / 3;
+}

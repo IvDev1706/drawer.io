@@ -9,9 +9,16 @@
 }
 
 .spaced {
-    justify-content: space-between;
+    justify-content: center;
+    gap: 50px;
 }
 
 .centered {
     justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+    .spaced {
+        gap: 5px;
+    }
 }

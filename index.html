@@ -8,10 +8,10 @@
     <title>Drawer.io</title>
 </head>
 <body id="cont">
-    <div id="bar">
-        <img src="./assets/menu.png" alt=">>" class="pic">
-    </div>
     <header id="head-cont" class="row-layout centered">
+        <h1>Drawer.io</h1>
+    </header>
+    <aside id="side-cont" class="column-layout">
         <div id="tools-cont" class="matrix-2x2">
             <button id="pincel-tool" class="btn">
                 <img src="./assets/pincel-DvEz6Ln2.png" alt="pincel" class="pic">
@@ -29,15 +29,15 @@
         <div id="config-cont" class="matrix-2x3">
             <input class="inpt" type="color" id="line-color">
             <input class="inpt" type="color" id="fill-color" value="#FFFFFF">
-            <input class="inpt" type="range" id="line-weight" min="1" max="20" value="5">
             <select class="inpt" id="font">
                 <option value="Arial" selected>Arial</option>
                 <option value="Verdana">Verdana</option>
                 <option value="Sans-Serif">Sans-Serif</option>
             </select>
             <input class="inpt" type="number" id="font-size" min="1" max="20" value="10">
+            <input class="inpt" type="range" id="line-weight" min="1" max="20" value="5">
         </div>
-        <div id="shapes-cont" class="matrix-2x5">
+        <div id="shapes-cont" class="matrix-5x2">
             <button id="line-tool" class="btn">
                 <img src="./assets/linea-DDeLJOmd.png" alt="linea" class="pic">
             </button>
@@ -81,17 +81,20 @@
         <button id="save-tool" class="btn">
             <img src="./assets/sav.png" alt="guardar" class="pic">
         </button>
-    </header>
+        <div id="tool-tab">
+            ->
+        </div>
+    </aside>
     <main id="main-cont">
         <div id="canvas-cont">
             <div style="width: 70%; margin: 0px auto;" id="text-cont" class="row-layout spaced">
-                <p id="res-text">Resolucion: (1080x480)</p>
+                <p id="res-text">Resolucion: (960x480)</p>
                 <p id="tool-text">Herramienta: ninguna</p>
                 <p id="cursor-text">Puntero: (0, 0)</p>
             </div>
             <div id="board-cont">
                 <!-- para PC -> 1080x480 y para movil 360x720 -->
-                <canvas id="board" width="1080" height="480"></canvas>
+                <canvas id="board" width="960" height="480"></canvas>
             </div>
         </div>
     </main>
