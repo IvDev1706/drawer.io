@@ -41,7 +41,7 @@
     #side-cont{
         width: 180px;
         height: 100vh;
-        transition: 1s ease-in left;
+        transition: 1s ease left;
         position: absolute;
         top: 0;
         left: -180px;

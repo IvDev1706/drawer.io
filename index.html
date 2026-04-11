@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/drawerio_logo.png"/>
     <link rel="stylesheet" href="./css/styles.css">
     <script type="module" src="./dist/main.js" defer></script>
     <title>Drawer.io</title>
@@ -12,6 +13,17 @@
         <h1>Drawer.io</h1>
     </header>
     <aside id="side-cont" class="column-layout">
+        <div id="config-cont" class="matrix-2x3">
+            <input class="inpt" type="color" id="line-color">
+            <input class="inpt" type="color" id="fill-color" value="#FFFFFF">
+            <select class="inpt" id="font">
+                <option value="Arial" selected>Arial</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Sans-Serif">Sans-Serif</option>
+            </select>
+            <input class="inpt" type="number" id="font-size" min="1" max="20" value="10">
+            <input class="inpt" type="range" id="line-weight" min="1" max="20" value="5">
+        </div>
         <div id="tools-cont" class="matrix-2x2">
             <button id="pincel-tool" class="btn">
                 <img src="./assets/pincel-DvEz6Ln2.png" alt="pincel" class="pic">
@@ -25,17 +37,6 @@
             <button id="clean-tool" class="btn">
                 <img src="./assets/escoba-xiQ31Mpi.png" alt="limpiar" class="pic">
             </button>
-        </div>
-        <div id="config-cont" class="matrix-2x3">
-            <input class="inpt" type="color" id="line-color">
-            <input class="inpt" type="color" id="fill-color" value="#FFFFFF">
-            <select class="inpt" id="font">
-                <option value="Arial" selected>Arial</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Sans-Serif">Sans-Serif</option>
-            </select>
-            <input class="inpt" type="number" id="font-size" min="1" max="20" value="10">
-            <input class="inpt" type="range" id="line-weight" min="1" max="20" value="5">
         </div>
         <div id="shapes-cont" class="matrix-5x2">
             <button id="line-tool" class="btn">
@@ -82,7 +83,7 @@
             <img src="./assets/sav.png" alt="guardar" class="pic">
         </button>
         <div id="tool-tab">
-            ->
+            <img src="./assets/menu.png" alt="guardar" class="pic">
         </div>
     </aside>
     <main id="main-cont">
